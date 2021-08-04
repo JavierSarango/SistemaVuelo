@@ -9,6 +9,6 @@ package Modelo;
  *
  * @author Javier
  */
-public class Pasajero {
+public class Pasajero extends Persona {
     
 }
