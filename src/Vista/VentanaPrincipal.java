@@ -39,6 +39,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocation(300,100);
         setResizable(false);
         initComponents();
+ 
         this.setImagen(jLAeropuerto,"src/Imagenes/los-santos.png");
         this.setImagenes(bntRegistrar,"src/Imagenes/registrar.png");
         
@@ -61,8 +62,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTfApellidos = new javax.swing.JTextField();
         jPanel2 = new FondoPanel2();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLAeropuerto = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         bntRegistrar = new javax.swing.JButton();
         jLRegCompra = new javax.swing.JLabel();
         jLNroAsiento = new javax.swing.JLabel();
@@ -94,19 +96,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel5.setText("AEROPUERTO INTERNACIONAL \"LOS SANTOS\"");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("VENTA DE BOLETOS");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
         jPanel2.add(jLAeropuerto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 150, 130));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel6.setText("AEROPUERTO INTERNACIONAL \"LOS SANTOS\"");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("BIENVENIDOS");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 190, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 720, 130));
 
         bntRegistrar.setToolTipText("");
-        jPanel1.add(bntRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 60, 60));
+        jPanel1.add(bntRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 60, 60));
 
-        jLRegCompra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLRegCompra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLRegCompra.setText("Registrar Compra ");
         jPanel1.add(jLRegCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
@@ -228,6 +234,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLRegCompra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTCiudadDestino;
