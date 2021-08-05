@@ -5,17 +5,44 @@
  */
 package Vista;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.lang.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Javier
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    FondoPanel fondo = new FondoPanel();
+    FondoPanel2 fondo2 = new FondoPanel2();
+    private ImageIcon imagen;
+    private Icon icono;
+
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
+
+        this.setContentPane(fondo);
+        setLocation(300,100);
+        setResizable(false);
         initComponents();
+        this.setImagen(jLAeropuerto,"src/Imagenes/los-santos.png");
+        this.setImagenes(bntRegistrar,"src/Imagenes/registrar.png");
+        
+       
     }
 
     /**
@@ -27,21 +54,106 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new FondoPanel();
+        jLNombre = new javax.swing.JLabel();
+        jTCiudadDestino = new javax.swing.JTextField();
+        jLApellidos = new javax.swing.JLabel();
+        jTfApellidos = new javax.swing.JTextField();
+        jPanel2 = new FondoPanel2();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLAeropuerto = new javax.swing.JLabel();
+        bntRegistrar = new javax.swing.JButton();
+        jLRegCompra = new javax.swing.JLabel();
+        jLNroAsiento = new javax.swing.JLabel();
+        jTfNroAsiento = new javax.swing.JTextField();
+        jLClase = new javax.swing.JLabel();
+        jcBClase = new javax.swing.JComboBox<>();
+        jLCiudadOrigen = new javax.swing.JLabel();
+        jTfNombre1 = new javax.swing.JTextField();
+        jLCiudadDestino = new javax.swing.JLabel();
+        jTCiudadOrigen1 = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLNombre.setText("Nombres: ");
+        jPanel1.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 80, 20));
+        jPanel1.add(jTCiudadDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 170, 30));
+
+        jLApellidos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLApellidos.setText("Apellidos:");
+        jPanel1.add(jLApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(jTfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 170, 30));
+
+        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel5.setText("AEROPUERTO INTERNACIONAL \"LOS SANTOS\"");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("VENTA DE BOLETOS");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+        jPanel2.add(jLAeropuerto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 150, 130));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 720, 130));
+
+        bntRegistrar.setToolTipText("");
+        jPanel1.add(bntRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 60, 60));
+
+        jLRegCompra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLRegCompra.setText("Registrar Compra ");
+        jPanel1.add(jLRegCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
+
+        jLNroAsiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLNroAsiento.setText("Nro Asiento");
+        jPanel1.add(jLNroAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        jPanel1.add(jTfNroAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 70, 30));
+
+        jLClase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLClase.setText("Clase: ");
+        jPanel1.add(jLClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
+
+        jcBClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primera Clase", "Bussines", "Turista" }));
+        jcBClase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcBClaseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jcBClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+
+        jLCiudadOrigen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLCiudadOrigen.setText("Ciudad Origen:");
+        jPanel1.add(jLCiudadOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
+        jPanel1.add(jTfNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 170, 30));
+
+        jLCiudadDestino.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLCiudadDestino.setText("Destino:");
+        jPanel1.add(jLCiudadDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, -1));
+        jPanel1.add(jTCiudadOrigen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 170, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcBClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcBClaseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcBClaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,6 +190,77 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    private void setImagen(JLabel lbl, String ruta) {
+        this.imagen = new ImageIcon(ruta);
+        this.icono = new ImageIcon(
+                this.imagen.getImage().getScaledInstance(
+                        lbl.getWidth(),
+                        lbl.getHeight(),
+                        Image.SCALE_DEFAULT
+                )
+        );
+        lbl.setIcon(this.icono);
+        this.repaint();
+    }
+            private void setImagenes(JButton jB, String ruta){
+        this.imagen = new ImageIcon(ruta);
+        this.icono = new ImageIcon(
+                this.imagen.getImage().getScaledInstance(
+                        jB.getWidth(),
+                        jB.getHeight(),
+                        Image.SCALE_DEFAULT
+                )
+        );
+        jB.setIcon(this.icono);
+        this.repaint();
+        
+        }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntRegistrar;
+    private javax.swing.JLabel jLAeropuerto;
+    private javax.swing.JLabel jLApellidos;
+    private javax.swing.JLabel jLCiudadDestino;
+    private javax.swing.JLabel jLCiudadOrigen;
+    private javax.swing.JLabel jLClase;
+    private javax.swing.JLabel jLNombre;
+    private javax.swing.JLabel jLNroAsiento;
+    private javax.swing.JLabel jLRegCompra;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTCiudadDestino;
+    private javax.swing.JTextField jTCiudadOrigen1;
+    private javax.swing.JTextField jTfApellidos;
+    private javax.swing.JTextField jTfNombre1;
+    private javax.swing.JTextField jTfNroAsiento;
+    private javax.swing.JComboBox<String> jcBClase;
     // End of variables declaration//GEN-END:variables
+class FondoPanel extends JPanel {
+
+        private Image imagen;
+
+        @Override
+        public void paint(Graphics g) {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/aeropuerto.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
+class FondoPanel2 extends JPanel {
+
+        private Image imagen;
+
+        @Override
+        public void paint(Graphics g) {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
 }
