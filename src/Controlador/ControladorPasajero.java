@@ -5,10 +5,18 @@
  */
 package Controlador;
 
+import java.util.Date;
+
 /**
  *
  * @author Javier
  */
 public class ControladorPasajero {
+    
+    public void GuardarDatos(String Nombre, String Apellidos, int numeroCedula, int Telefono, int nroAsiento, Date fechaVuelo){
+    
+    
+    
+    }
     
 }

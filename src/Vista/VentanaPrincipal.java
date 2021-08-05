@@ -75,6 +75,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTfNombre1 = new javax.swing.JTextField();
         jLCiudadDestino = new javax.swing.JLabel();
         jTCiudadOrigen1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTfCedulaPasaporte = new javax.swing.JTextField();
+        jLFecha = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +93,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLApellidos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLApellidos.setText("Apellidos:");
         jPanel1.add(jLApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-        jPanel1.add(jTfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 170, 30));
+        jPanel1.add(jTfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 200, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,17 +107,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel6.setText("AEROPUERTO INTERNACIONAL \"LOS SANTOS\"");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel1.setText("BIENVENIDOS");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 190, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 720, 130));
 
         bntRegistrar.setToolTipText("");
-        jPanel1.add(bntRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 60, 60));
+        bntRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntRegistrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bntRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 60, 60));
 
         jLRegCompra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLRegCompra.setText("Registrar Compra ");
+        jLRegCompra.setText("Registrar Vuelo ");
         jPanel1.add(jLRegCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
         jLNroAsiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -136,12 +145,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLCiudadOrigen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLCiudadOrigen.setText("Ciudad Origen:");
         jPanel1.add(jLCiudadOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
-        jPanel1.add(jTfNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 170, 30));
+        jPanel1.add(jTfNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 200, 30));
 
         jLCiudadDestino.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLCiudadDestino.setText("Destino:");
         jPanel1.add(jLCiudadDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, -1));
         jPanel1.add(jTCiudadOrigen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, 170, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Cédula/Pasaporte: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        jPanel1.add(jTfCedulaPasaporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 150, 30));
+
+        jLFecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLFecha.setText("Fecha de Vuelo:");
+        jPanel1.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 170, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,6 +179,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jcBClaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcBClaseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcBClaseActionPerformed
+
+    private void bntRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRegistrarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bntRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,15 +248,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntRegistrar;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLAeropuerto;
     private javax.swing.JLabel jLApellidos;
     private javax.swing.JLabel jLCiudadDestino;
     private javax.swing.JLabel jLCiudadOrigen;
     private javax.swing.JLabel jLClase;
+    private javax.swing.JLabel jLFecha;
     private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLNroAsiento;
     private javax.swing.JLabel jLRegCompra;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -240,6 +267,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTCiudadDestino;
     private javax.swing.JTextField jTCiudadOrigen1;
     private javax.swing.JTextField jTfApellidos;
+    private javax.swing.JTextField jTfCedulaPasaporte;
     private javax.swing.JTextField jTfNombre1;
     private javax.swing.JTextField jTfNroAsiento;
     private javax.swing.JComboBox<String> jcBClase;
@@ -250,7 +278,7 @@ class FondoPanel extends JPanel {
 
         @Override
         public void paint(Graphics g) {
-            imagen = new ImageIcon(getClass().getResource("/imagenes/aeropuerto.jpg")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo2.jpg")).getImage();
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
 
             setOpaque(false);
