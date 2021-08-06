@@ -14,7 +14,9 @@ import java.net.URL;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.lang.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -38,12 +40,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     FondoPanel2 fondo2 = new FondoPanel2();
     private ImageIcon imagen;
     private Icon icono;
+    public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/YYYY");
 
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
-
+        
         this.setContentPane(fondo);
         setLocation(300,100);
         setResizable(false);
@@ -61,6 +64,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
  
         this.setImagen(jLAeropuerto,"src/Imagenes/los-santos.png");
         this.setImagenes(bntRegistrar,"src/Imagenes/registrar.png");
+        this.setImagenes(bntMostrar,"src/Imagenes/mostrarvuelo.png");
+        
         
        
     }
@@ -222,10 +227,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void bntRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRegistrarActionPerformed
          // TODO add your handling code here:
         
-        
+        Date fechav;
         ArrayList<Pasajero> listap = new ArrayList<>();
         Controlador.ControladorPasajero ctrlPasajero = new ControladorPasajero();
         Pasajero mod = new Pasajero();
+        fechav = jDFechaVuelo.getDate();
+        sdf.format(fechav);
+         
         int ced = Integer.parseInt(jTfCedulaPasaporte.getText());
         mod.setNombres(jTfNombre1.getText());
         mod.setApellidos(jTfApellidos.getText());        
@@ -234,7 +242,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mod.setCiudadOrigen(jTCiudadOrigen1.getText());
         mod.setClase(jcBClase.getSelectedItem().toString());
         mod.setCedula(ced);
-        mod.setFechaVuelo(jDFechaVuelo.getDate());
+        mod.setFechaVuelo(fechav);
         mod.setTelefono(Integer.parseInt(jTfTelefono.getText()));
         listap.add(mod);
         if(ctrlPasajero.GuardarDatos(mod)) {
@@ -249,6 +257,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTCiudadOrigen1.setText("");
         jTfTelefono.setText("");
         jTfCedulaPasaporte.setText("");
+        jDFechaVuelo.setDate(null);
         
     }//GEN-LAST:event_bntRegistrarActionPerformed
 
@@ -256,6 +265,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ListaDeInformacion listaDeInformacion = new ListaDeInformacion();
         listaDeInformacion.setVisible(true);
+        
         
     }//GEN-LAST:event_bntMostrarActionPerformed
 

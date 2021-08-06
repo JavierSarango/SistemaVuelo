@@ -33,6 +33,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Javier
  */
 public class ControladorPasajero {
+    public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/YYYY");
     ArrayList<Pasajero> ListaDPasajeros = new ArrayList<>();
     public void GuadarInformacionTabla(Pasajero pasajero){
         ListaDPasajeros.add(pasajero);
@@ -76,7 +77,7 @@ public class ControladorPasajero {
             pw.print("|"+pasajero.getCedula());
             pw.print("|"+pasajero.getCiudadOrigen());
             pw.print("|"+pasajero.getCiudadDestino());
-            pw.print("|"+pasajero.getFechaVuelo());
+            pw.print("|"+sdf.format(pasajero.getFechaVuelo()));
             pw.print("|"+pasajero.getNroAsiento());
             pw.print("|"+pasajero.getTelefono());
             pw.println("|"+pasajero.getClase());
