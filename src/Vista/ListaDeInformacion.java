@@ -40,6 +40,7 @@ public class ListaDeInformacion extends javax.swing.JFrame {
         resultados.addElement("Telefono");
         resultados.addElement("Clase");
         table = new DefaultTableModel(resultados,0);
+        //JbtnListar.setModel(table);
     }
 
     /**
@@ -86,6 +87,11 @@ public class ListaDeInformacion extends javax.swing.JFrame {
         }
 
         JbtnListar.setText("LISTAR");
+        JbtnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbtnListarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("ELIMINAR");
 
@@ -138,6 +144,10 @@ public class ListaDeInformacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JbtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbtnListarActionPerformed
+        //JbtnListar.setModel(controladorPasajero.listadeVuelos());
+    }//GEN-LAST:event_JbtnListarActionPerformed
 
     /**
      * @param args the command line arguments
