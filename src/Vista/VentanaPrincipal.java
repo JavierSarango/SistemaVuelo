@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Controlador.ControladorPasajero;
+import Modelo.Pasajero;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.net.MalformedURLException;
@@ -12,11 +14,13 @@ import java.net.URL;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.lang.*;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -78,7 +82,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTfCedulaPasaporte = new javax.swing.JTextField();
         jLFecha = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDFechaVuelo = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        jTfTelefono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,7 +138,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLClase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLClase.setText("Clase: ");
-        jPanel1.add(jLClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
+        jPanel1.add(jLClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
 
         jcBClase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Primera Clase", "Bussines", "Turista" }));
         jcBClase.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +146,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jcBClaseActionPerformed(evt);
             }
         });
-        jPanel1.add(jcBClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+        jPanel1.add(jcBClase, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
 
         jLCiudadOrigen.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLCiudadOrigen.setText("Ciudad Origen:");
@@ -159,8 +165,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLFecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLFecha.setText("Fecha de Vuelo:");
-        jPanel1.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 170, 30));
+        jPanel1.add(jLFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, -1, -1));
+        jPanel1.add(jDFechaVuelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 170, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Telefono:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
+        jPanel1.add(jTfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 150, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,6 +193,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void bntRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRegistrarActionPerformed
         // TODO add your handling code here:
+        
+        
+        ArrayList<Pasajero> listap = new ArrayList<>();
+        Controlador.ControladorPasajero ctrlPasajero = new ControladorPasajero();
+        Pasajero mod = new Pasajero();
+        int ced = Integer.parseInt(jTfCedulaPasaporte.getText());
+        mod.setNombres(jTfNombre1.getText());
+        mod.setApellidos(jTfApellidos.getText());        
+        mod.setNroAsiento(Integer.parseInt(jTfNroAsiento.getText()));
+        mod.setCiudadDestino(jTCiudadDestino.getText());
+        mod.setCiudadOrigen(jTCiudadOrigen1.getText());
+        mod.setClase(jcBClase.getSelectedItem().toString());
+        mod.setCedula(ced);
+        mod.setFechaVuelo(jDFechaVuelo.getDate());
+        mod.setTelefono(Integer.parseInt(jTfTelefono.getText()));
+        listap.add(mod);
+        if(ctrlPasajero.GuardarDatos(mod)) {
+            JOptionPane.showMessageDialog(null, "Registro Completado!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al guardar");
+        }
+        jTfNombre1.setText("");
+        jTfApellidos.setText("");
+        jTfNroAsiento.setText("");
+        jTCiudadDestino.setText("");
+        jTCiudadOrigen1.setText("");
+        jTfTelefono.setText("");
+        jTfCedulaPasaporte.setText("");
         
     }//GEN-LAST:event_bntRegistrarActionPerformed
 
@@ -245,10 +284,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.repaint();
         
         }
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntRegistrar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDFechaVuelo;
     private javax.swing.JLabel jLAeropuerto;
     private javax.swing.JLabel jLApellidos;
     private javax.swing.JLabel jLCiudadDestino;
@@ -260,6 +300,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLRegCompra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -270,6 +311,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTfCedulaPasaporte;
     private javax.swing.JTextField jTfNombre1;
     private javax.swing.JTextField jTfNroAsiento;
+    private javax.swing.JTextField jTfTelefono;
     private javax.swing.JComboBox<String> jcBClase;
     // End of variables declaration//GEN-END:variables
 class FondoPanel extends JPanel {

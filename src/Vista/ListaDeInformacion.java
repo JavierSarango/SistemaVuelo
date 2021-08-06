@@ -5,6 +5,12 @@
  */
 package Vista;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Home
@@ -15,7 +21,34 @@ public class ListaDeInformacion extends javax.swing.JFrame {
      * Creates new form ListaDeInformacion
      */
     public ListaDeInformacion() {
+        
         initComponents();
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            archivo = new File("infoPasajero.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            
+            String linea;
+            DefaultListModel model_lista = new DefaultListModel();
+            DefaultTableModel model_tabla = new DefaultTableModel();
+            model_tabla.addColumn("Nombre");
+            model_tabla.addColumn("Apellido");
+            model_tabla.addColumn("Cedula");
+            model_tabla.addColumn("Ciudad Destino");
+            model_tabla.addColumn("Ciudad Origen");
+            model_tabla.addColumn("Fecha Vuelo");
+            model_tabla.addColumn("Nro Asiento");
+            model_tabla.addColumn("Telefono");
+            model_tabla.addColumn("Clase");
+            while((linea=br.readLine())!=null){
+                model_tabla.addRow(new String[]{linea});
+            }
+            JTableInformacion.setModel(model_tabla);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -38,16 +71,33 @@ public class ListaDeInformacion extends javax.swing.JFrame {
 
         JTableInformacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null", "null", "null", "null", "null"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(JTableInformacion);
+        if (JTableInformacion.getColumnModel().getColumnCount() > 0) {
+            JTableInformacion.getColumnModel().getColumn(2).setResizable(false);
+            JTableInformacion.getColumnModel().getColumn(3).setResizable(false);
+            JTableInformacion.getColumnModel().getColumn(4).setResizable(false);
+            JTableInformacion.getColumnModel().getColumn(5).setResizable(false);
+            JTableInformacion.getColumnModel().getColumn(6).setResizable(false);
+            JTableInformacion.getColumnModel().getColumn(7).setResizable(false);
+            JTableInformacion.getColumnModel().getColumn(8).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,7 +105,7 @@ public class ListaDeInformacion extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -63,18 +113,22 @@ public class ListaDeInformacion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
