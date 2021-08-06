@@ -15,6 +15,7 @@ import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.lang.*;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,12 +23,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Javier
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    DefaultTableModel table;
+    Vector datosPrincipales = new Vector();
 
     FondoPanel fondo = new FondoPanel();
     FondoPanel2 fondo2 = new FondoPanel2();
@@ -43,6 +48,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocation(300,100);
         setResizable(false);
         initComponents();
+        datosPrincipales.addElement("Nombres");
+        datosPrincipales.addElement("Apellidos");
+        datosPrincipales.addElement("Cedula");
+        datosPrincipales.addElement("Origen");
+        datosPrincipales.addElement("Destino");
+        datosPrincipales.addElement("Fecha");
+        datosPrincipales.addElement("Asiento");
+        datosPrincipales.addElement("Telefono");
+        datosPrincipales.addElement("Clase");
+        table = new DefaultTableModel(datosPrincipales, 0);
  
         this.setImagen(jLAeropuerto,"src/Imagenes/los-santos.png");
         this.setImagenes(bntRegistrar,"src/Imagenes/registrar.png");
@@ -174,6 +189,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Telefono:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
         jPanel1.add(jTfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 150, 30));
+
+        bntMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntMostrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(bntMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 60, 60));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -199,7 +220,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jcBClaseActionPerformed
 
     private void bntRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRegistrarActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
         
         
         ArrayList<Pasajero> listap = new ArrayList<>();
@@ -230,6 +251,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTfCedulaPasaporte.setText("");
         
     }//GEN-LAST:event_bntRegistrarActionPerformed
+
+    private void bntMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntMostrarActionPerformed
+        // TODO add your handling code here:
+        ListaDeInformacion listaDeInformacion = new ListaDeInformacion();
+        listaDeInformacion.setVisible(true);
+        
+    }//GEN-LAST:event_bntMostrarActionPerformed
 
     /**
      * @param args the command line arguments

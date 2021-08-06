@@ -10,6 +10,11 @@ package Modelo;
  * @author Javier
  */
 public abstract class Persona {
+    
+    private String Nombres;
+    private String Apellidos;
+    private int cedula;
+    private int telefono;
 
     public String getNombres() {
         return Nombres;
@@ -42,8 +47,4 @@ public abstract class Persona {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-    private String Nombres;
-    private String Apellidos;
-    private int cedula;
-    private int telefono;
 }

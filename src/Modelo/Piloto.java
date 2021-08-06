@@ -10,5 +10,13 @@ package Modelo;
  * @author Home
  */
 public class Piloto extends Persona{
-    
+    private String codigoPiloto;
+
+    public String getCodigoPiloto() {
+        return codigoPiloto;
+    }
+
+    public void setCodigoPiloto(String codigoPiloto) {
+        this.codigoPiloto = codigoPiloto;
+    }
 }
