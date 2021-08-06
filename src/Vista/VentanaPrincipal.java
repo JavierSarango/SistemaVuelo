@@ -85,6 +85,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jDFechaVuelo = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jTfTelefono = new javax.swing.JTextField();
+        bntMostrar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,6 +174,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Telefono:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
         jPanel1.add(jTfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 150, 30));
+        jPanel1.add(bntMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 60, 60));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Mostrar Vuelos");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,6 +294,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntMostrar;
     private javax.swing.JButton bntRegistrar;
     private com.toedter.calendar.JDateChooser jDFechaVuelo;
     private javax.swing.JLabel jLAeropuerto;
@@ -301,6 +309,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
